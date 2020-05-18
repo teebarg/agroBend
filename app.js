@@ -4,10 +4,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+require('dotenv').config();
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var db = require('./models');
 
 var app = express();
+
+db
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.!');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
