@@ -12,10 +12,10 @@ var db = require('./models');
 
 var app = express();
 
-db
+db.sequelize
   .authenticate()
   .then(() => {
-    console.log('Connection has been established successfully.!');
+    console.log('Connection has been established successfully.!e11');
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);
