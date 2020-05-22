@@ -41,10 +41,9 @@ exports.store = async (req, res) => {
     const data = new S3(path, buffedImage);
     s3Bucket.putObject(data, async (err, data) => {
         if (err) {
-            console.log(err);
             res.status(ResponseCode.SERVERERROR).json(response.getCustom(data, ResponseCode.SERVERERROR));
         } else {
-            // Save User in the database
+            // Save Image in the database
             try {
                 const image = await Image.create({
                     image: imgName,
@@ -81,10 +80,9 @@ exports.update = async (req, res) => {
         const data = new S3(path, buffedImage);
         s3Bucket.putObject(data, async (err, data) => {
             if (err) {
-                console.log(err);
                 res.status(ResponseCode.SERVERERROR).json(response.getCustom(data, ResponseCode.SERVERERROR));
             } else {
-                // Save User in the database
+                // Update Image in the database
                 try {
                     const updated = await Image.update({image: imgName}, {
                         where: {
