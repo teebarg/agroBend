@@ -1,5 +1,4 @@
 const Admin = require("../models").Admin;
-const Response = require("../helpers/response");
 const ResponseMessage = require("../helpers/response-message");
 const ResponseCode = require("../helpers/response-code");
 const Resp = require("../helpers/base-response");
