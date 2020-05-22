@@ -38,16 +38,6 @@ services:
     networks:
       - app-network
 
-  #adminer
-  adminer:
-    image: adminer
-    container_name: agro_node_dbAdmin
-    restart: unless-stopped
-    ports:
-      - 103:8080
-    networks:
-      - app-network
-
 #Docker Networks
 networks:
   app-network:
