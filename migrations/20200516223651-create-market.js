@@ -15,7 +15,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       address: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      latitude: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      longitude: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       categoryId: {
         type: Sequelize.DataTypes.INTEGER,
