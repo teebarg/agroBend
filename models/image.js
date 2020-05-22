@@ -5,7 +5,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Image.associate = function(models) {
     // associations can be defined here
-    Image.belongsTo(models.Market)
+    Image.belongsTo(models.Market, {
+      foreignKey: 'marketId',
+      onDelete: 'CASCADE',
+    })
   };
   return Image;
 };
