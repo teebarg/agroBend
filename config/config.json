@@ -1,0 +1,27 @@
+{
+  "development": {
+    "username": "root",
+    "password": "password",
+    "database": "agro",
+    "host": "agro_db",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "bhpkigoaxkzfnt",
+    "password": "a7bbd27ba6de456fc7482ba9e4cad5e0db5d9dfca831186870bf8852974ac194",
+    "database": "d5klvlpknls63",
+    "host": "ec2-18-233-32-61.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
+

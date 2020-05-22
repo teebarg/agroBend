@@ -1,0 +1,49 @@
+version: '3.5'
+services:
+
+  #PHP Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agro_node
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+      - /home/node/app/node_modules
+    ports:
+      - 100:3000
+    command: npm run dev
+    networks:
+      - app-network
+
+  #postgres
+  db:
+    container_name: agro_db
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: agro
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    ports:
+      - 102:5432
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    name: agro
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
