@@ -6,10 +6,13 @@ var logger = require('morgan');
 
 require('dotenv').config();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var marketRouter = require('./routes/market');
+var authRouter = require('./routes/auth');
+var imageRouter = require('./routes/image');
+var categoryRouter = require('./routes/category');
 var db = require('./models');
 
+var cors = require('cors')
 var app = express();
 
 db.sequelize
@@ -26,13 +29,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false, limit: '50mb' }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json({limit: '50mb'}));
+app.use(cors())
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/market', marketRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/image', imageRouter);
+app.use('/api/category', categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
