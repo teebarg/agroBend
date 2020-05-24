@@ -3,11 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Admin = sequelize.define('Admin', {
     name: DataTypes.STRING,
     email: {type: DataTypes.STRING, unique: true},
-    password: { 
-      type:DataTypes.STRING, 
-      set(value) {
-      this.setDataValue('password', bcrypt.hashSync(value, 8));
-    }}
+    password: DataTypes.STRING
   }, {});
   Admin.associate = function(models) {
     // associations can be defined here

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Market = sequelize.define('Market', {
-    name: {type : DataTypes.STRING, unique: true},
+    name: {type : DataTypes.STRING},
     description: DataTypes.STRING,
     latitude: {
       type: DataTypes.DECIMAL,
